@@ -63,7 +63,7 @@
 
 	</head>
 
-	
+
 	<body>
 		
 	<div class="fh5co-loader"></div>
@@ -113,7 +113,7 @@
 			
 		</div>
 	</nav>
-	
+	@yield('content')
 	<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
