@@ -13,13 +13,16 @@ class CreateProdukPembelisTable extends Migration
      */
     public function up()
     {
-        Schema::create('produk__pembelis', function (Blueprint $table) {
+        Schema::create('produk_pembelis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_produk');
             $table->unsignedBigInteger('id_pembeli');
             $table->dateTime('tanggal')->nullable();
-            $table->unsignedBigInteger('tarif_instalasi')->nullable();
+            $table->unsignedBigInteger('total')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_produk')->references('id')->on('produk');
+            $table->foreign('id_pembeli')->references('id')->on('pembeli');
         });
     }
 
