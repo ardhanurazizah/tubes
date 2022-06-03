@@ -20,12 +20,12 @@
         </ul>
         </div>
         @endif
-            <form method="post" action="{{ route('pembeli.update', $pembeli->id_users) }}" id="myForm" }}" method="post" enctype="multipart/form-data">
+            <form method="post" action="{{ route('pembeli.update', $pembeli->id) }}" id="myForm" }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="id_users">Id Pembeli</label> 
-                <input type="text" name="id_users" class="form-control" id="id_users" value="{{ $pembeli->id_users }}" aria-describedby="id_users" > 
+                <label for="id">Id Pembeli</label> 
+                <input type="text" name="id" class="form-control" id="id" value="{{ $pembeli->id }}" aria-describedby="id" > 
             </div>
                 <div class="form-group">
                 <label for="nama">Nama</label> 
