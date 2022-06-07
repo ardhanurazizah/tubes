@@ -33,9 +33,9 @@ Route::get('/Produk/cetak_pdf', [ProdukController::class,'cetak_pdf'])->name('ce
 // Route::get('/home', function () {
 //     return view('masterview');
 // });
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

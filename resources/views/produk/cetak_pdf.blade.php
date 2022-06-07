@@ -18,10 +18,7 @@
             <h3 class="text-center mb-5">JURUSAN TEKNOLOGI INFORMASI - POLITEKNIK NEGERI MALANG</h3>
             <h2 class="text-center mb-4">KARTU HASIL STUDI (KHS)</h2>
         </center>
-        <!-- <div class="container">
-            <p><b>Nama : </b> {{ $nilai->mahasiswa->nama }}</p>
-            <p><b>NIM : </b> {{ $nilai->mahasiswa->nim }}</p>
-            <p><b>Kelas : </b> {{ $nilai->mahasiswa->kelas->nama_kelas }}</p> -->
+       
         <table class="table table-bordered" style="width:95%;margin:0 auto;">
         <tr>
             <th>Id</th>
@@ -29,7 +26,7 @@
             <th>Harga</th>
             <th>Stok</th>
         </tr>
-            @foreach ($Produk as $hasil)
+            @foreach ($produk as $hasil)
                 <tr>
                     <td>{{ $hasil->id }}</td>&emsp
                     <td>{{ $hasil->nama}}</td>&emsp
