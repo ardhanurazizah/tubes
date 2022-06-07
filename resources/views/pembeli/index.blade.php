@@ -33,7 +33,7 @@
     </tr>
     @foreach ($pembeli as $pbl)
     <tr>
-        <td>{{ $pbl ->id_users }}</td>
+        <td>{{ $pbl ->id }}</td>
         <td>{{ $pbl ->nama }}</td>
         <td>{{ $pbl ->alamat }}</td>
         <td>{{ $pbl ->no }}</td>
