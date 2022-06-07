@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Http\Request;
 
 /*
@@ -14,12 +15,14 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pembeli', PembeliController::class);
+Route::resource('produk', ProdukController::class);
+
+Route::get('/Produk/cetak_pdf', [ProdukController::class,'cetak_pdf'])->name('cetak_pdf');
 
 // Auth::routes();
 
@@ -30,9 +33,9 @@ Route::resource('pembeli', PembeliController::class);
 // Route::get('/home', function () {
 //     return view('masterview');
 // });
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -18,4 +18,17 @@ class Produk extends Model
         'stok',
         'foto',
     ];
+
+    public function pembeli()
+    {
+        return $this->belongsTo(Pembeli::class, 'id_pembeli');
+    }
+    public function penjual()
+    {
+        return $this->belongsTo(Penjual::class, 'id_penjual');
+    }
+    public function produk_pembelis()
+    {
+        return $this->belongsToMany(ProdukPembeli::class);
+    }
 }

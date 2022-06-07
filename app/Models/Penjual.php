@@ -18,4 +18,13 @@ class Penjual extends Model
         'no',
         'foto',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_users');
+    }
+    public function produk()
+    {
+        return $this->hasMany(Produk::class, 'id_penjual');
+    }
 }

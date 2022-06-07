@@ -16,4 +16,14 @@ class ProdukPembeli extends Model
         'tanggal',
         'total',
     ];
+
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class);
+    }
+
+    public function pembeli()
+    {
+        return $this->belongsTo(Pembeli::class);
+    }
 }

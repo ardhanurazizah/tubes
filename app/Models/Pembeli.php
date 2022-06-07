@@ -28,4 +28,17 @@ class Pembeli extends Model
         'no',
         'foto',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_users');
+    }
+    public function Produk()
+    {
+        return $this->hasMany(Produk::class, 'id_pembeli');
+    }
+    public function produk_pembelis()
+    {
+        return $this->belongsToMany(ProdukPembeli::class);
+    }
 }
