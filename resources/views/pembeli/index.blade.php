@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left mt-2">
-        <center> <h2>Halaman Pembeli Toko Barokah Jaya</h2> </center>
+        <center> <h2>Halaman Pembeli Toko PRUTA</h2> </center>
         </div>
         <div class="float-right my-2">
             <a class="btn btn-success" href="{{ route('pembeli.create') }}"> Input Pembeli</a>
@@ -29,7 +29,7 @@
         <th>Alamat</th>
         <th>No Hp</th>
         <th>Foto</th>
-        <th width="280px">Action</th>
+        <th width="300px">Action</th>
     </tr>
     @foreach ($pembeli as $pbl)
     <tr>
@@ -37,7 +37,7 @@
         <td>{{ $pbl ->nama }}</td>
         <td>{{ $pbl ->alamat }}</td>
         <td>{{ $pbl ->no }}</td>
-        <td><img width="50px" src="{{ asset('storage/' . $pbl->foto)}}" alt="" srcset=""></td>
+        <td><img width="110px" src="{{asset('storage/'.$pbl->foto)}}">
         <td>
             <form action="{{ route('pembeli.destroy',['pembeli'=>$pbl->id_users]) }}" method="POST">
                 <a class="btn btn-info" href="{{ route('pembeli.show',$pbl->id_users) }}">Show</a>

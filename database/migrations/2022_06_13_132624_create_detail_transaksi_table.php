@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProdukPembelisTable extends Migration
+class CreateDetailTransaksiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateProdukPembelisTable extends Migration
      */
     public function up()
     {
-        Schema::create('produk_pembelis', function (Blueprint $table) {
+        Schema::create('detail_transaksi', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_transaksi');
+            $table->foreign('id_transaksi')->references('id')->on('transaksi');
             $table->unsignedBigInteger('id_produk');
-            $table->unsignedBigInteger('id_pembeli');
-            $table->dateTime('tanggal')->nullable();
-            $table->unsignedBigInteger('total')->nullable();
-            $table->timestamps();
-
             $table->foreign('id_produk')->references('id')->on('produk');
-            $table->foreign('id_pembeli')->references('id')->on('pembeli');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +30,6 @@ class CreateProdukPembelisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produk__pembelis');
+        Schema::dropIfExists('detail_transaksi');
     }
 }

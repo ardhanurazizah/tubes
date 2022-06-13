@@ -27,12 +27,12 @@ Route::resource('pembeli', PembeliController::class);
 //     return view('welcome');
 // });
 
-// Route::get('/home', function () {
-//     return view('masterview');
-// });
+Route::get('/home', function () {
+    return view('masterview');
+ });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
