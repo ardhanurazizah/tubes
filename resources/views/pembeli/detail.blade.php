@@ -13,6 +13,7 @@
                 <li class="list-group-item"><b>Nama: </b>{{$pembeli->nama}}</li>
                 <li class="list-group-item"><b>Alamat: </b>{{$pembeli->alamat}}</li>
                 <li class="list-group-item"><b>No HP: </b>{{$pembeli->no}}</li>
+                <li class="list-group-item"><b>Foto: </b><img style="width: 100%" src="{{ asset('./storage/'. $pembeli->foto) }}" alt=""></li>
                 </ul>
             </div>
             <a class="btn btn-success mt-3" href="{{ route('pembeli.index') }}">Kembali</a>

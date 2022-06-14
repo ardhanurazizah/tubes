@@ -47,9 +47,9 @@ Route::get('/a', function () {
 //     return view('welcome');
 // });
 
-// Route::get('/home', function () {
-//     return view('masterview');
-// });
+Route::get('/home', function () {
+    return view('masterview');
+ });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\MasterviewController::class, 'index'])->name('home');

@@ -37,8 +37,8 @@
         <td>{{ $pbl ->nama }}</td>
         <td>{{ $pbl ->alamat }}</td>
         <td>{{ $pbl ->no }}</td>
-        <!-- <td><img width="50px" src="{{ asset('storage/' . $pbl->foto)}}" alt="" srcset=""></td> -->
-        <td><img width="150px" src="{{asset('storage/'.$pbl->foto)}}"> 
+        <td><img width="110px" src="{{asset('storage/'.$pbl->foto)}}">
+        
         <td>
             <form action="{{ route('pembeli.destroy',['pembeli'=>$pbl->id_users]) }}" method="POST">
                 <a class="btn btn-info" href="{{ route('pembeli.show',$pbl->id_users) }}">Show</a>

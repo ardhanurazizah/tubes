@@ -33,7 +33,7 @@
             </div>
                 <div class="form-group">
                 <label for="alamat">Alamat</label> 
-                <input type="alamat" name="alamat" class="form-control" id="Kelas" value="{{ $pembeli->alamat }}" aria-describedby="alamat" > 
+                <input type="alamat" name="alamat" class="form-control" id="alamat" value="{{ $pembeli->alamat }}" aria-describedby="alamat" > 
             </div>
                 <div class="form-group">
                 <label for="no">No HP</label> 
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group">
                         <label for="image">Foto Profile</label>         
-                        <input type="file" class="form-control" name="foto" value="{{ $pembeli->foto}}">
+                        <input enctype="multipart/formdata" type="file" class="form-control" name="foto" value="{{ $pembeli->foto}}">
                         <img width="150px" src="{{asset('storage/'.$pembeli->foto)}}"> 
                     </div> 
                 <button type="submit" class="btn btn-primary">Submit</button>
