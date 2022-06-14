@@ -18,11 +18,16 @@ class ProdukController extends Controller
      */
     public function index()
     {
+        if (request('search')) {
+            $paginate = Produk::where('nama', 'like', '%' . request('search') . '%')
+                                    ->paginate(5); // Mengambil semua isi tabel
+                                    return view('produk.index', ['paginate'=>$paginate]);
+        }else{
         //fungsi eloquent menampilkan data menggunakan pagination
         $produk = Produk::all(); // Mengambil semua isi tabel
         $paginate = Produk::orderBy('id', 'asc')->paginate(5);
         return view('produk.index', ['produk' => $produk,'paginate'=>$paginate]);
-
+    }
     }
 
     /**

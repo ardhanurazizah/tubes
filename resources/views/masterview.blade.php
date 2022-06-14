@@ -73,10 +73,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">Shop.</a></div>
+					<div id="fh5co-logo"><a href="index.html">PRuTa</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
+					<li class="has-dropdown">
+							
+							
+						</li>
 						<li class="has-dropdown">
 							<a href="product.html">Shop</a>
 							<ul class="dropdown">
@@ -84,16 +88,49 @@
 							</ul>
 						</li>
 						<li><a href="about.html">About</a></li>
+						@if (auth()->user()->name=="Ardha Nur Azizah")
 						<li class="has-dropdown">
-							<a href="services.html">Services</a>
+							<a href="services.html">Menu</a>
 							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
+								<li><a href="{{ route('produk.index') }}">Produk</a></li>
+								<li><a href="{{ route('pembeli.index') }}">Pembeli</a></li>
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
+						@endif
 						<li><a href="contact.html">Contact</a></li>
+						
+						@guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                
+
+                                <div class="has-dropdown" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                        
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
@@ -223,10 +260,11 @@
 					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
 				</div>
 			</div>
-			<div class="row">
+			@foreach ($paginate as $pr)
+			<div class="col">
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-1.jpg);">
+					<div class="product-grid" style="background-image src="{{asset('storage/'.$pr->foto)}}">
 							<div class="inner">
 								<p>
 									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
@@ -235,14 +273,14 @@
 							</div>
 						</div>
 						<div class="desc">
-							<h3><a href="single.html">Hauteville Concrete Rocking Chair</a></h3>
-							<span class="price">$350</span>
-						</div>
+							<h3><a href="single.html">{{ $pr ->nama }}</h3>
+							<span class="price">{{ $pr ->harga }}</span>
+						 </div>
 					</div>
 				</div>
-				<div class="col-md-4 text-center animate-box">
+				<!-- <div class="col-md-4 text-center animate-box">
 					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-2.jpg);">
+						<div class="product-grid" style="background-image src="{{asset('storage/'.$pr->foto)}}">
 							<span class="sale">Sale</span>
 							<div class="inner">
 								<p>
@@ -252,14 +290,14 @@
 							</div>
 						</div>
 						<div class="desc">
-							<h3><a href="single.html">Pavilion Speaker</a></h3>
-							<span class="price">$600</span>
+							<h3><a href="single.html">{{ $pr ->nama }}</a></h3>
+							<span class="price">{{ $pr ->harga }}</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-3.jpg);">
+						<div class="product-grid" style="background-image src="{{asset('storage/'.$pr->foto)}}">
 							<div class="inner">
 								<p>
 									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
@@ -268,8 +306,8 @@
 							</div>
 						</div>
 						<div class="desc">
-							<h3><a href="single.html">Ligomancer</a></h3>
-							<span class="price">$780</span>
+							<h3><a href="single.html">{{ $pr ->nama }}</a></h3>
+							<span class="price">{{ $pr ->harga }}</span>
 						</div>
 					</div>
 				</div>
@@ -277,7 +315,7 @@
 			<div class="row">
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-4.jpg);">
+						<div class="product-grid" style="background-image src="{{asset('storage/'.$pr->foto)}}">
 							<div class="inner">
 								<p>
 									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
@@ -286,14 +324,14 @@
 							</div>
 						</div>
 						<div class="desc">
-							<h3><a href="single.html">Alato Cabinet</a></h3>
-							<span class="price">$800</span>
+							<h3><a href="single.html">{{ $pr ->nama }}</a></h3>
+							<span class="price">{{ $pr ->harga }}</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-5.jpg);">
+						<div class="product-grid" style="background-image src="{{asset('storage/'.$pr->foto)}}">
 							<div class="inner">
 								<p>
 									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
@@ -302,14 +340,14 @@
 							</div>
 						</div>
 						<div class="desc">
-							<h3><a href="single.html">Earing Wireless</a></h3>
-							<span class="price">$100</span>
+							<h3><a href="single.html">{{ $pr ->nama }}</a></h3>
+							<span class="price">{{ $pr ->harga }}</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-6.jpg);">
+						<div class="product-grid" style="background-image src="{{asset('storage/'.$pr->foto)}}">
 							<div class="inner">
 								<p>
 									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
@@ -318,15 +356,14 @@
 							</div>
 						</div>
 						<div class="desc">
-							<h3><a href="single.html">Sculptural Coffee Table</a></h3>
-							<span class="price">$960</span>
+							<h3><a href="single.html">{{ $pr ->nama }}</a></h3>
+							<span class="price">{{ $pr ->harga }}</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	
+		</div>-->
+	</div> @endforeach
 	<div id="fh5co-testimonial" class="fh5co-bg-section">
 		<div class="container">
 			<div class="row animate-box">

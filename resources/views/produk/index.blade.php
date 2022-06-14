@@ -4,12 +4,22 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left mt-2">
-        <center> <h2>Daftar Produk Toko Barokah Jaya</h2> </center>
+        <center> <h2>Daftar Produk Toko PRuTa</h2> </center>
         </div >
+        <div class="row justify-content-center">
+    <div class="col-md-6">
+        <form action="{{ route('produk.index') }}">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search')}}">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
         <!-- <div class="row"> -->
         <div class="float-right my-2">
-            <a class="btn btn-success" href="{{ route('cetak_pdf') }}"> Cetak PDF </a>
-        </div>
+            <a class="btn btn-warning" style="#A0522D" href="{{ route('cetak_pdf') }}"> Cetak Laporan </a>
+        </div>&nbsp;
         <div class="float-right my-2">
             <a class="btn btn-success" href="{{ route('produk.create') }}"> Input Pembeli</a>
         </div>
@@ -28,7 +38,6 @@
 @endif
 <table class="table table-bordered">
     <tr>
-        <th>Id Produk</th>
         <th>Nama</th>
         <th>Deskripsi</th>
         <th>Harga</th>
@@ -38,7 +47,6 @@
     </tr>
     @foreach ($paginate as $pr)
     <tr>
-        <td>{{ $pr ->id }}</td>
         <td>{{ $pr ->nama }}</td>
         <td>{{ $pr ->deskripsi }}</td>
         <td>{{ $pr ->harga }}</td>
