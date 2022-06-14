@@ -94,6 +94,7 @@
 							<ul class="dropdown">
 								<li><a href="{{ route('produk.index') }}">Produk</a></li>
 								<li><a href="{{ route('pembeli.index') }}">Pembeli</a></li>
+								<li><a href="{{ route('transaksi.index') }}">Transaksi</a></li>
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">API</a></li>
 							</ul>
@@ -264,14 +265,14 @@
 			<div class="col">
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
-					<div class="product-grid" style="background-image src="{{asset('storage/'.$pr->foto)}}">
+					<img width="150px" src="{{asset('storage/'.$pr->foto)}}"> 
 							<div class="inner">
 								<p>
 									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
 									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
 								</p>
 							</div>
-						</div>
+						
 						<div class="desc">
 							<h3><a href="single.html">{{ $pr ->nama }}</h3>
 							<span class="price">{{ $pr ->harga }}</span>

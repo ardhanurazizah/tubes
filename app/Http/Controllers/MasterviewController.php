@@ -19,7 +19,7 @@ class MasterviewController extends Controller
     public function index()
     {
         $produk = Produk::all(); // Mengambil semua isi tabel
-        $paginate = Produk::orderBy('id', 'asc')->paginate(2);
+        $paginate = Produk::orderBy('id', 'asc')->paginate(6);
         return view('masterview', ['produk' => $produk,'paginate'=>$paginate]);
     }
 

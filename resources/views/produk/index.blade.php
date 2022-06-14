@@ -5,8 +5,8 @@
     <div class="col-lg-12 margin-tb">
         <div class="pull-left mt-2">
         <center> <h2>Daftar Produk Toko PRuTa</h2> </center>
-        </div >
-        <div class="row justify-content-center">
+</div >
+<div class="row justify-content-center">
     <div class="col-md-6">
         <form action="{{ route('produk.index') }}">
             <div class="input-group mb-3">
@@ -52,7 +52,7 @@
         <td>{{ $pr ->harga }}</td>
         <td>{{ $pr ->stok }}</td>
         <td><img width="150px" src="{{asset('storage/'.$pr->foto)}}"> 
-        <!-- <td><img width="50px" src="{{ asset('storage/'.$pr->foto)}}" alt="" srcset=""></td> -->
+        
         <td>
             <form action="{{ route('produk.destroy',['produk'=>$pr->id]) }}" method="POST">
                 <a class="btn btn-info" href="{{ route('produk.show',$pr->id) }}">Show</a>

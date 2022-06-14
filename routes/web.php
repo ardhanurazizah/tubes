@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Middleware\CekLevel;
 use Illuminate\Http\Request;
 
@@ -24,10 +25,11 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth','CekLevel:Ardha Nur Azizah']], function(){
     Route::resource('produk', ProdukController::class);
     Route::resource('pembeli', PembeliController::class);
-    
+    Route::resource('transaksi', TransaksiController::class);
 });
 // Route::resource('produk', ProdukController::class);
 // Route::resource('pembeli', PembeliController::class);
+// Route::resource('transaksi', TransaksiController::class);
 
 Route::get('/Produk/cetak_pdf', [ProdukController::class,'cetak_pdf'])->name('cetak_pdf');
 
