@@ -208,5 +208,16 @@ class ProdukController extends Controller
         $pdf = PDF::loadview('produk.cetak_pdf',['produk'=>$Produk]);
         return $pdf->stream();
     }
-    
+    public function tampilan()
+    {
+        if (request('search')) {
+            $paginate = Produk::where('nama', 'like', '%' . request('search') . '%')
+                                    ->paginate(10); // Mengambil semua isi tabel
+                                    return view('produk.tampilan', ['paginate'=>$paginate]);
+        }else{
+        //fungsi eloquent menampilkan data menggunakan pagination
+        $produk = Produk::all(); // Mengambil semua isi tabel
+             return view('produk.tampilan', ['produk' => $produk]);
+    }
+    }
 }

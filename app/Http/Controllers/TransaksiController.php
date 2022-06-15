@@ -113,4 +113,9 @@ class TransaksiController extends Controller
          return redirect()->route('transaksi.index')
          -> with('success', 'Transaksi Berhasil Dihapus');
     }
+    public function detail($id)
+    {
+        $transaksi = Transaksi::with('detail_transaksi')->where('id', $id)->get();
+        return view('transaksi.detail', ['transaksi' => $transaksi]);
+    }
 }

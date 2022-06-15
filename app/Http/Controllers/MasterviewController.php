@@ -52,7 +52,9 @@ class MasterviewController extends Controller
      */
     public function show($id)
     {
-        //
+        $Produk = Produk::where('id', $id)->first();
+        return view('detail', compact('Produk'));
+        
     }
 
     /**
@@ -88,4 +90,5 @@ class MasterviewController extends Controller
     {
         //
     }
+    
 }

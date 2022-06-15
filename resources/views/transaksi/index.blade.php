@@ -48,13 +48,13 @@
         <td>{{ $tr ->tanggal }}</td>
         <td>{{ $tr ->total }}</td>
         <td>
-            <!-- <form action="{{ route('transaksi.destroy',['transaksi'=>$tr->id]) }}" method="POST"> -->
+            <form action="{{ route('transaksi.destroy',['transaksi'=>$tr->id]) }}" method="POST">
                 <a class="btn btn-info" href="{{ route('transaksi.show',$tr->id) }}">Show</a>
                 <a class="btn btn-primary" href="{{ route('transaksi.edit',$tr->id) }}">Edit</a>
-                <!-- @csrf
+                @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button> -->
-            <!-- </form> -->
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form> 
         </td>
     </tr>
     @endforeach
