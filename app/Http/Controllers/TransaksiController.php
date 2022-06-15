@@ -65,8 +65,9 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        $transaksi = Transaksi::where('id', $id)->first();
-        return view('transaksi.detail', compact('transaksi'));
+        $transaksi = Transaksi::with('DetailTransaksi')->where('id', $id)->first();
+		return view('transaksi.detail', ['transaksi' => $transaksi]);
+
     }
 
     /**

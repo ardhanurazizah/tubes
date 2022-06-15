@@ -14,6 +14,8 @@
         </div>
 
 
+        <a style="float: right"class="btn btn-success mt-3" href="/transaksi/{{ $transaksi->id }}/pdf">Cetak Nota</a>
+
 
         <b>Id Transaksi:</b> {{ $transaksi->id }}<br>
         <b>Id Pembeli: </b>{{ $transaksi->id_pembeli }}<br>
@@ -26,7 +28,16 @@
                     <th>Jumlah</th>
                     <th>@Harga</th>
                 </tr>
-                
+
+                @foreach ($transaksi as $dt)
+                    <tr>
+                        <td>{{ $dt->detail_transaksi->id }}</td>
+                        <td>{{ $dt->detail_transaksi->jumlah }}</td>
+                        <td>{{ $dt->detail_transaksi->harga }}</td>
+                    </tr>
+                @endforeach
+
+
             </table>
         </div>
     
