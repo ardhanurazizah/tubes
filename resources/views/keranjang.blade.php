@@ -111,22 +111,50 @@
 			
 		</div>
 	</nav>
+<div class="col-md-12 mt-2">
+	
 
-	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url({{ asset('images/img_bg_2.jpg') }});">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Product Details</h1>
-							<h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+        </div
+        <div class="col-md-12 mt-1">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- <div class="col-md-6">
+                            <img src="{{ url('uploads') }}/{{ $produk->gambar }}" class="rounded mx-auto d-block" width="100%" alt=""> 
+                        </div> -->
+						
+						<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+		<div class="card" style="width: 24rem;">
+        <div class="card-body">
+		<a class="btn btn-success mt-3" href="{{ route('tampilan') }}">Kembali</a>
+            <ul class="list-group list-group-flush">
+			<img style="width: 100%" src="{{ asset('./storage/'. $produk->foto) }}" alt="">
+               <li class="list-group-item"><b>Nama Produk: </b>{{$produk->nama}}</li>
+               <li class="list-group-item"><b>Tresedia: </b>{{ number_format($produk->stok) }}</li>
+               <li class="list-group-item"><b>Harga: </b>{{ number_format($produk->harga) }}</li>
+               <li class="list-group-item"><b>Masukkan jumlah produk:</li>
+			   <li>
+			   <form method="post" action="{{ url('keranjang') }}/{{ $produk->id }}" >
+				@csrf
+                <input type="text" name="jumlah_pesan" class="form-control" required="">
+                <button type="submit" class="btn btn-primary mt-2">Masukkan Keranjang</button>
+                </form>
+</li>
+               </ul>
+           </div>
+        </div>
+    </div>
+</div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	
+<!-- 	
 	
 	<div id="fh5co-product">
 		<div class="container">
@@ -136,63 +164,63 @@
 						<div class="item">
 							<div class="active text-center">
 								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
+									<img src="{{ asset('./storage/'. $produk->foto) }}" alt="user">
 								</figure>
 							</div>
 						</div>
 						<div class="item">
 							<div class="active text-center">
 								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
+									<img src="{{ asset('./storage/'. $produk->foto) }}" alt="user">
 								</figure>
 							</div>
 						</div>
 						<div class="item">
 							<div class="active text-center">
 								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
+									<img src="{{ asset('./storage/'. $produk->foto) }}" alt="user">
 								</figure>
 							</div>
 						</div>
 						<div class="item">
 							<div class="active text-center">
 								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
+									<img src="{{ asset('./storage/'. $produk->foto) }}" alt="user">
 								</figure>
 							</div>
 						</div>
 						<div class="item">
 							<div class="active text-center">
 								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
+									<img src="{{ asset('./storage/'. $produk->foto) }}" alt="user">
 								</figure>
 							</div>
 						</div>
 					</div>
 					<div class="row animate-box">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-							<h2>{{$Produk->nama}}</h2>
-							<h3>{{$Produk->deskripsi}}</h3>
-							<h3> Rp {{$Produk->harga}}</h3>
+							<h2>{{$produk->nama}}</h2>
+							<h3>{{$produk->deskripsi}}</h3>
+							<h3> Rp {{$produk->harga}}</h3>
 							<p>
-								<a href="{{ url('keranjang') }}/{{ $Produk->id }} " class="btn btn-primary btn-outline btn-lg">Add to Cart</a>
+								<a href="#" class="btn btn-primary btn-outline btn-lg">Add to Cart</a>
 								<a href="#" class="btn btn-primary btn-outline btn-lg">Compare</a>
 							</p>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
+			</div> -->
+			<!-- <div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="fh5co-tabs animate-box">
 						<ul class="fh5co-tab-nav">
 							<li class="active"><a href="#" data-tab="1"><span class="icon visible-xs"><i class="icon-file"></i></span><span class="hidden-xs">Product Details</span></a></li>
 							<li><a href="#" data-tab="2"><span class="icon visible-xs"><i class="icon-bar-graph"></i></span><span class="hidden-xs">Specification</span></a></li>
 							<li><a href="#" data-tab="3"><span class="icon visible-xs"><i class="icon-star"></i></span><span class="hidden-xs">Feedback &amp; Ratings</span></a></li>
-						</ul>
+						</ul> -->
 
-						<!-- Tabs -->
-						<div class="fh5co-tab-content-wrap">
+						
+						<!-- <div class="fh5co-tab-content-wrap">
 
 							<div class="fh5co-tab-content tab-content active" data-tab-content="1">
 								<div class="col-md-10 col-md-offset-1">
@@ -273,7 +301,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div id="fh5co-started">
 		<div class="container">

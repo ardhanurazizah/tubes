@@ -111,169 +111,43 @@
 			
 		</div>
 	</nav>
+<div class="col-md-12 mt-2">
 
-	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url({{ asset('images/img_bg_2.jpg') }});">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Product Details</h1>
-							<h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	
-	<div id="fh5co-product">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1 animate-box">
-					<div class="owl-carousel owl-carousel-fullwidth product-carousel">
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
-								</figure>
-							</div>
-						</div>
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
-								</figure>
-							</div>
-						</div>
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
-								</figure>
-							</div>
-						</div>
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
-								</figure>
-							</div>
-						</div>
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="{{ asset('./storage/'. $Produk->foto) }}" alt="user">
-								</figure>
-							</div>
-						</div>
-					</div>
-					<div class="row animate-box">
-						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-							<h2>{{$Produk->nama}}</h2>
-							<h3>{{$Produk->deskripsi}}</h3>
-							<h3> Rp {{$Produk->harga}}</h3>
-							<p>
-								<a href="{{ url('keranjang') }}/{{ $Produk->id }} " class="btn btn-primary btn-outline btn-lg">Add to Cart</a>
-								<a href="#" class="btn btn-primary btn-outline btn-lg">Compare</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="fh5co-tabs animate-box">
-						<ul class="fh5co-tab-nav">
-							<li class="active"><a href="#" data-tab="1"><span class="icon visible-xs"><i class="icon-file"></i></span><span class="hidden-xs">Product Details</span></a></li>
-							<li><a href="#" data-tab="2"><span class="icon visible-xs"><i class="icon-bar-graph"></i></span><span class="hidden-xs">Specification</span></a></li>
-							<li><a href="#" data-tab="3"><span class="icon visible-xs"><i class="icon-star"></i></span><span class="hidden-xs">Feedback &amp; Ratings</span></a></li>
-						</ul>
+<table class="table table-bordered">
+    <tr>
+        <th>Tanggal</th>
+        
+        <th>Harga</th>
+        <th>Total</th>
+        <th width="280px">Action</th>
+    </tr>
+    @foreach($transaksi as $pesanan)
+                            <tr>
+                                
+                                <td>{{ $pesanan->tanggal }}</td>
+                                <td>
+                                    @if($pesanan->status == 0)
+                                    Sudah Pesan & Belum dibayar
+                                    @else
+                                    Sudah dibayar 
+                                    @endif
+                                </td>
+                                <td>{{ number_format($pesanan->jumlah_harga+$pesanan->kode) }}</td>
+                                <td>
+                                    <a href="{{ url('pesan') }}/{{ $pesanan->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail</a>
+                                </td>
+                            </tr>
+                            @endforeach
+    </table>
+        </div
+        <div class="col-md-12 mt-1">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        
+						
 
-						<!-- Tabs -->
-						<div class="fh5co-tab-content-wrap">
 
-							<div class="fh5co-tab-content tab-content active" data-tab-content="1">
-								<div class="col-md-10 col-md-offset-1">
-									<span class="price">SRP: $350</span>
-									<h2>Hauteville Rocking Chair</h2>
-									<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
-
-									<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
-
-									<div class="row">
-										<div class="col-md-6">
-											<h2 class="uppercase">Keep it simple</h2>
-											<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis</p>
-										</div>
-										<div class="col-md-6">
-											<h2 class="uppercase">Less is more</h2>
-											<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis</p>
-										</div>
-									</div>
-
-								</div>
-							</div>
-
-							<div class="fh5co-tab-content tab-content" data-tab-content="2">
-								<div class="col-md-10 col-md-offset-1">
-									<h3>Product Specification</h3>
-									<ul>
-										<li>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius</li>
-										<li>adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi</li>
-										<li>Veritatis tenetur odio delectus quibusdam officiis est.</li>
-										<li>Magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</li>
-									</ul>
-									<ul>
-										<li>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius</li>
-										<li>adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi</li>
-										<li>Veritatis tenetur odio delectus quibusdam officiis est.</li>
-										<li>Magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="fh5co-tab-content tab-content" data-tab-content="3">
-								<div class="col-md-10 col-md-offset-1">
-									<h3>Happy Buyers</h3>
-									<div class="feed">
-										<div>
-											<blockquote>
-												<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
-											</blockquote>
-											<h3>&mdash; Louie Knight</h3>
-											<span class="rate">
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-											</span>
-										</div>
-										<div>
-											<blockquote>
-												<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
-											</blockquote>
-											<h3>&mdash; Joefrey Gwapo</h3>
-											<span class="rate">
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-												<i class="icon-star2"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div id="fh5co-started">
 		<div class="container">

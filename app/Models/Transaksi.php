@@ -12,8 +12,10 @@ class Transaksi extends Model
     protected $table = 'transaksi';
 
     protected $fillable = [
-        'id_pembeli',
+        'id_user',
         'tanggal',
+        'status',
+        'kode',
         'total',
     ];
 
@@ -27,8 +29,12 @@ class Transaksi extends Model
         return $this->belongsTo(Pembeli::class, 'id_pembeli');
     }
 
-    public function detail_transaksi()
+    public function detail()
     {
-        return $this->hasMany(DetailTransaksi::class);
+        return $this->hasMany(Detail::class, 'id_transaksi');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

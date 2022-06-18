@@ -85,6 +85,7 @@
 							<a href="product.html">Shop</a>
 							<ul class="dropdown">
 								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
+								<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>
 							</ul>
 						</li>
 						<li><a href="about.html">About</a></li>
@@ -94,14 +95,14 @@
 							<ul class="dropdown">
 								<li><a href="{{ route('produk.index') }}">Produk</a></li>
 								<li><a href="{{ route('pembeli.index') }}">Pembeli</a></li>
-								<li><a href="{{ route('transaksi.index') }}">Transaksi</a></li>
+								
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
 						@endif
 						<li><a href="contact.html">Contact</a></li>
-						
+						<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>						
 						@guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -144,7 +145,7 @@
 						      </span>
 						    </div>
 						</li>
-						<li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+						<li class="shopping-cart"><a href="" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
 					</ul>
 				</div>
 			</div>

@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
-use App\Models\DetailTransaksi;
+use App\Models\Produk;
+use App\Models\User;
+use App\Models\Detail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+use Auth;
+use Alert;
+use Carbon\Carbon;
 
 class TransaksiController extends Controller
 {
@@ -16,25 +21,16 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        if (request('search')) {
-            $paginate = Transaksi::where('id', 'like', '%' . request('search') . '%')
-                                    ->orwhere('id_pembeli', 'like', '%' . request('search') . '%')
-                                    ->paginate(5); // Mengambil semua isi tabel
-                                    return view('transaksi.index', ['paginate'=>$paginate]);
-        }else{
-            //fungsi eloquent menampilkan data menggunakan pagination
-            // $mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
-            // $paginate = Mahasiswa::orderBy('id_mahasiswa', 'asc')->paginate(5);
-            // return view('mahasiswa.index', ['mahasiswa' => $mahasiswa,'paginate'=>$paginate]);
-            $transaksi = Transaksi::all();
-            $paginate = Transaksi::orderBy('id', 'asc')->paginate(5);
-            return view('transaksi.index', ['transaksi' => $transaksi,'paginate'=>$paginate]);
-
-
-        }
+        // $produk = Produk::where('id', $id)->first();
+        // return view('transaksi.index', compact('produk'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +39,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $detail = DetailTransaksi::all(); // mendapatkan data dari tabel kelas
+	    return view('transaksi.create',['detail' => $detail]);
     }
 
     /**
@@ -54,7 +51,34 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_pembeli' => 'required',
+            'id_produk' => 'required',
+            'jumlah' => 'required',
+            'harga' => 'required',
+            'total' => 'required',
+           
+        ]);
+        // //fungsi eloquent untuk menambah data
+        // transaksi::create($request->all());
+        
+        $transaksi = new Transaksi;
+        $transaksi->id_pembeli = $request->get('id_pembeli');
+        $transaksi->total = $request->get('total'); 
+    
+        $detail = DetailTransaksi::find($request->get('id_produk'));
+        $detail = DetailTransaksi::find($request->get('jumlah'));
+        $detail = DetailTransaksi::find($request->get('harga'));
+        //fungsi eloquent untuk menambah data dengan relasi belongsTo
+
+        $transaksi->detail()->associate($detail);
+        $transaksi->save();
+    
+                     // Mahasiswa::create($request->all());
+    
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('transaksi.index')
+            ->with('success', 'Transaksi Berhasil Ditambahkan');
     }
 
     /**
@@ -65,9 +89,9 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        $transaksi = Transaksi::with('DetailTransaksi')->where('id', $id)->first();
-		return view('transaksi.detail', ['transaksi' => $transaksi]);
-
+        $detail = DetailTransaksi::where('id', $id)->first();
+        return view('transaksi.detail', compact('detail'));
+        
     }
 
     /**
@@ -110,13 +134,93 @@ class TransaksiController extends Controller
      */
     public function destroy($id)
     {
-        Transaksi::where('id', $id)->delete();
-         return redirect()->route('transaksi.index')
-         -> with('success', 'Transaksi Berhasil Dihapus');
+        $detail = Detail::where('id', $id)->first();
+        $transaksi = Transaksi::where('id', $detail->id_transaksi)->first();
+        $transaksi->total = $transaksi->subtotal-$detail->subtotal;
+        $transaksi->update();
+        $detail->delete();
+        Alert::error('Transaksi Sukses Dihapus', 'Hapus');
+        return redirect('checkout');
     }
-    public function detail($id)
+    public function pesan(Request $request, $id)
+    {   
+        $produk = Produk::where('id', $id)->first();
+        $tanggal = Carbon::now();
+        //validasi apakah melebihi stok
+        if($request->jumlah_transaksi > $produk->stok)
+        {
+            return redirect('pesan/'.$id);
+        }
+        //cek validasi
+        $cek_transaksi = Transaksi::where('id_users', Auth::user()->id)->where('status',0)->first();
+        //simpan ke database pesanan
+        if(empty($cek_transaksi))
+        {
+            $transaksi = new Transaksi;
+            $transaksi->id_users = Auth::user()->id;
+            $transaksi->tanggal = $tanggal;
+            $transaksi->status = 0;
+            $transaksi->total = 0;
+            $transaksi->kode = mt_rand(100, 999);
+            $transaksi->save();
+        }
+        
+        //simpan ke database pesanan detail
+        $transaksi_baru = Transaksi::where('id_users', Auth::user()->id)->where('status',0)->first();
+        //cek pesanan detail
+        $cek_detail = Detail::where('id_produk', $produk->id)->where('id_transaksi', $transaksi_baru->id)->first();
+        if(empty($cek_detail))
+        {
+            $detail = new Detail;
+            $detail->id_produk = $produk->id;
+            $detail->id_transaksi = $transaksi_baru->id;
+            $detail->jumlah = $request->jumlah_pesan;
+            $detail->subtotal = $produk->harga*$request->jumlah_pesan;
+            $detail->save();
+        }else 
+        {
+            $detail = Detail::where('id_produk', $produk->id)->where('id_transaksi', $transaksi_baru->id)->first();
+            $detail->jumlah = $detail->jumlah+$request->jumlah_pesan;
+            //harga sekarang
+            $harga_detail_baru = $produk->harga*$request->jumlah_pesan;
+            $detail->subtotal = $detail->subtotal+$harga_detail_baru;
+            $detail->update();
+        }
+        //jumlah total
+        $transaksi = Transaksi::where('id_users', Auth::user()->id)->where('status',0)->first();
+        $transaksi->total = $transaksi->subtotal+$produk->harga*$request->jumlah_pesan;
+        $transaksi->update();
+        
+        // Alert::success('Transaksi Sukses Masuk Keranjang', 'Success');
+        return redirect('checkout');
+    }
+    public function checkout()
     {
-        $transaksi = Transaksi::with('detail_transaksi')->where('id', $id)->get();
-        return view('transaksi.detail', ['transaksi' => $transaksi]);
+        $transaksi = Transaksi::where('id_users', Auth::user()->id)->where('status',0)->first();
+        if(!empty($transaksi))
+        {
+            $details = Detail::where('id_transaksi', $transaksi->id)->get();
+        }
+        
+        return view('checkout', compact('transaksi', 'details'));
+    }
+    public function konfirmasi()
+    {
+        $transaksi = Transaksi::where('id_users', Auth::user()->id)->where('status',0)->first();
+        $id_transaksi = $transaksi->id;
+        $transaksi->status = 1;
+        $transaksi->update();
+        $details = Detail::where('id_transaksi', $id_transaksi)->get();
+        foreach ($details as $detail) {
+            $produk = Produk::where('id', $detail->id_produk)->first();
+            $produk->stok = $produk->stok-$detail->jumlah;
+            $produk->update();
+        }
+        return redirect('pesan/'.$id_transaksi);
+    }
+    public function keranjang($id)
+    {
+        $produk = Produk::where('id', $id)->first();
+        return view('keranjang', compact('produk'));
     }
 }
