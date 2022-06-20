@@ -27,8 +27,9 @@ class TransaksiController extends Controller
     }
     public function index()
     {
-        // $produk = Produk::where('id', $id)->first();
-        // return view('transaksi.index', compact('produk'));
+        $transaksi = Transaksi::all(); // Mengambil semua isi tabel
+        $paginate = Transaksi::orderBy('id', 'asc')->paginate(5);
+        return view('transaksi.index', ['transaksi' => $transaksi,'paginate'=>$paginate]);
     }
     
 
@@ -89,8 +90,8 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        $detail = DetailTransaksi::where('id', $id)->first();
-        return view('transaksi.detail', compact('detail'));
+        $details = Detail::where('id', $id)->first();
+        return view('pesan', compact('details'));
         
     }
 

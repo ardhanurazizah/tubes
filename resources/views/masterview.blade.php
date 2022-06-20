@@ -95,7 +95,7 @@
 							<ul class="dropdown">
 								<li><a href="{{ route('produk.index') }}">Produk</a></li>
 								<li><a href="{{ route('pembeli.index') }}">Pembeli</a></li>
-								
+								<li><a href="{{ route('transaksi.index') }}">Transaksi</a></li>
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">API</a></li>
 							</ul>
