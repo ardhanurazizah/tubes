@@ -13,7 +13,7 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        //
+    //   
     }
     
 
@@ -46,7 +46,7 @@ class ProfilController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
     }
 
     /**

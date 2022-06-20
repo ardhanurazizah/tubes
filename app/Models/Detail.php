@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailTransaksi extends Model
+class Detail extends Model
 {
     use HasFactory;
 
-    protected $table = 'detail_transaksi';
+    protected $table = 'detail';
 
     protected $fillable = [
         'id_transaksi',
@@ -25,6 +25,6 @@ class DetailTransaksi extends Model
 
     public function produk()
     {
-        return $this->hasMany(Produk::class);
+        return $this->belongsTo(Produk::class, 'id_produk');
     }
 }

@@ -38,23 +38,31 @@
         <th>Id Transaksi</th>
         <th>Id Pembeli</th>
         <th>Tanggal</th>
-        <th>Total Harga</th>
+        <th>Status</th>
+        <th>Total Belanja</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($paginate as $tr)
     <tr>
         <td>{{ $tr ->id }}</td>
-        <td>{{ $tr ->id_pembeli }}</td>
+        <td>{{ $tr ->id_users }}</td>
         <td>{{ $tr ->tanggal }}</td>
+        <td>
+                                    @if($tr->status == 0)
+                                    Belum di bayar
+                                    @else
+                                    Sudah dibayar 
+                                    @endif
+                                </td>
         <td>{{ $tr ->total }}</td>
         <td>
-            <!-- <form action="{{ route('transaksi.destroy',['transaksi'=>$tr->id]) }}" method="POST"> -->
-                <a class="btn btn-info" href="{{ route('transaksi.show',$tr->id) }}">Show</a>
+            <form action="{{ route('transaksi.destroy',['transaksi'=>$tr->id]) }}" method="POST">
+                <a class="btn btn-info" href="{{ url('pesan') }}/{{ $tr->id }}">Show</a>
                 <a class="btn btn-primary" href="{{ route('transaksi.edit',$tr->id) }}">Edit</a>
-                <!-- @csrf
+                @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button> -->
-            <!-- </form> -->
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form> 
         </td>
     </tr>
     @endforeach

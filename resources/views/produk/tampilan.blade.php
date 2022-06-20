@@ -38,24 +38,24 @@
 	<!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet"> -->
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
 
 	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -85,7 +85,6 @@
 							<a href="product.html">Shop</a>
 							<ul class="dropdown">
 								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
-								<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>
 							</ul>
 						</li>
 						<li><a href="about.html">About</a></li>
@@ -102,7 +101,7 @@
 						</li>
 						@endif
 						<li><a href="contact.html">Contact</a></li>
-						<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>						
+						
 						@guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -145,7 +144,7 @@
 						      </span>
 						    </div>
 						</li>
-						<li class="shopping-cart"><a href="" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
+						<li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -153,115 +152,7 @@
 		</div>
 	</nav>
 	@yield('content')
-	<aside id="fh5co-hero" class="js-fullheight">
-		<div class="flexslider js-fullheight">
-			<ul class="slides">
-		   	<li style="background-image: url(images/teko.jpg);">
-		   		<div class="overlay-gradient"></div>
-		   		<div class="container">
-		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<div class="desc">
-		   						<span class="price">Rp.110000</span>
-		   						<h2>TEKO TERMOS KEKINIAN 1 LITER</h2>
-		   						<p>Lapisan luar termos teko dari bahan plastik foodgrade sehingga aman untuk keluarga Lapisan dalam teko terbuat dari kaca yg BPA free dengan dilapisi logam ( electroplating ) sehingga aman bagi keluarga Tutupan putar teko sangat pakem sehingga anti bocor</p>
-			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
-		   					</div>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		   	<li style="background-image: url(images/piring.png);">
-		   		<div class="container">
-		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<div class="desc">
-		   						<span class="price">Rp.75000</span>
-		   						<h2>Piring Keramik Hitam Aesthetic</h2>
-		   						<p>Piring aesthetic, mewah dan simple, Cocok untuk segala tema ruang makan
-									Bahan : Keramik
-									Microwave & Oven safe</p>
-			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
-		   					</div>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		   	<li style="background-image: url(images/pisau.jpg);">
-		   		<div class="container">
-		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<div class="desc">
-		   						<span class="price">Rp.189000</span>
-		   						<h2>KITCHEN GADGET SET OF 7 ROSEGOLD KITCHENWARE ALAT ALAT DAPUR USEFULL </h2>
-		   						<p>paket set lengkap peralatan dapur terdiri dari
-									garlic press (18x6,8cm)
-									can opener (20,3x6.4cm)
-									pizza cutter (21.3x8,6cm)
-									pairing knife (20.3x2.8cm)
-									grater (24x5.5cm)
-									ice cream spoon (20.3x4.1cm)
-									egg beater (28.4x6cm)</p>
-			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
-		   					</div>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		   	<li style="background-image: url(images/pan.png);">
-		   		<div class="container">
-		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<div class="desc">
-		   						<span class="price">Rp.325000</span>
-		   						<h2>Grill Pan 28 x 28 x 4 cm Marble Diecast Series FP-0814-M</h2>
-		   						<p>GAGANG DI DESAIN DENGAN TEKNIK MENYATU LANGSUNG KE BADAN WAJAN.TIDAK MUDAH GOYAH!</p>
-			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
-		   					</div>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		  	</ul>
-	  	</div>
-	</aside>
-
-	<div id="fh5co-services" class="fh5co-bg-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-4 text-center">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-credit-card"></i>
-						</span>
-						<h3>Credit Card</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 text-center">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-wallet"></i>
-						</span>
-						<h3>Save Money</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 text-center">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-paper-plane"></i>
-						</span>
-						<h3>Free Delivery</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<div id="fh5co-product">
 		<div class="container">
 			<div class="row animate-box">
@@ -271,7 +162,7 @@
 					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
 				</div>
 			</div>
-			@foreach ($paginate as $pr)
+			@foreach ($produk as $pr)
 			<div class="col">
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
@@ -375,10 +266,9 @@
 			</div>
 		</div>-->
 	</div> 
-	@endforeach
 	
-	{!! $paginate->links() !!} 
-	<div id="fh5co-testimonial" class="fh5co-bg-section">
+	@endforeach
+	<!-- <div id="fh5co-testimonial" class="fh5co-bg-section">
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -481,7 +371,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
     
 	<div id="fh5co-started">
 		<div class="container">
@@ -571,23 +461,22 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-	
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
 	<!-- Carousel -->
-	<script src="js/owl.carousel.min.js"></script>
+	<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 	<!-- countTo -->
-	<script src="js/jquery.countTo.js"></script>
+	<script src="{{ asset('js/jquery.countTo.js') }}"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
 	<!-- Main -->
-	<script src="js/main.js"></script>
+	<script src="{{ asset('js/main.js') }}"></script>
 
 	</body>
 </html>
