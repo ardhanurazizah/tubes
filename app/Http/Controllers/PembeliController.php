@@ -6,6 +6,7 @@ use App\Models\Pembeli;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class PembeliController extends Controller
 {
@@ -16,10 +17,16 @@ class PembeliController extends Controller
      */
     public function index()
     {
+        if (request('search')) {
+            $paginate = Pembeli::where('nama', 'like', '%' . request('search') . '%')
+                                    ->paginate(3); // Mengambil semua isi tabel
+                                    return view('pembeli.index', ['paginate'=>$paginate]);
+        }else{
         //fungsi eloquent menampilkan data menggunakan pagination
         $pembeli = Pembeli::all(); // Mengambil semua isi tabel
-        $paginate = Pembeli::orderBy('id', 'asc')->paginate(5);
+        $paginate = Pembeli::orderBy('id', 'asc')->paginate(3);
         return view('pembeli.index', ['pembeli' => $pembeli,'paginate'=>$paginate]);
+        }
     }
 
     /**
@@ -29,7 +36,10 @@ class PembeliController extends Controller
      */
     public function create()
     {
-        return view('pembeli.create');
+        //return view('pembeli.create');
+
+        $pembeli =Pembeli::all(); // mendapatkan data dari tabel kelas
+	    return view('pembeli.create',['id' => $pembeli]);
     }
 
     /**
@@ -40,17 +50,26 @@ class PembeliController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->file('foto')) {
+            $image_name = $request->file('foto')->store('fotos', 'public');
+        }
+
+        //melakukan validasi data
+        $request->validate([
+            // 'id' => 'required',
+             'nama' => 'required',
+             'alamat' => 'required',
+             'no' => 'required',
+             'foto' => 'required'
+         ]);
+
         $pembeli = new Pembeli;
         $pembeli->id = $request->get('id');
         $pembeli->nama = $request->get('nama');
         $pembeli->alamat = $request->get('alamat');
         $pembeli->no = $request->get('no');
-
-        if ($request->file('foto')) {
-            $image_name = $request->file('foto')->store('fotos', 'public');
-        } else {
-            $image_name = 'default.jpg';
-        }
+        $pembeli->foto = $image_name;
+        $pembeli->save();
 
         //melakukan validasi data
         // $request->validate([
@@ -67,8 +86,8 @@ class PembeliController extends Controller
         // $pembeli->alamat = $request->get('alamat');
         // $pembeli->no = $request->get('no');
         // $pembeli->foto = $image_name;
-        $pembeli->save();
 
+        
         //fungsi eloquent untuk menambah data
         Pembeli::create($request->all());
 
@@ -86,7 +105,7 @@ class PembeliController extends Controller
     public function show($id)
     {
         //menampilkan detail data dengan menemukan/berdasarkan Id Pembeli
-        $pembeli = Pembeli::where('id_users', $id)->first();
+        $pembeli = Pembeli::where('id', $id)->first();
         return view('pembeli.detail', compact('pembeli'));
     }
 
@@ -157,11 +176,18 @@ class PembeliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_users)
+    public function destroy($id)
     {
          //fungsi eloquent untuk menghapus data
-         Pembeli::where('id_users', $id_users)->delete();
+         Pembeli::where('id', $id)->delete();
          return redirect()->route('pembeli.index')
          -> with('success', 'Pembeli Berhasil Dihapus');
+    }
+
+    public function cetak_pdf()
+    {
+        $pembeli = Pembeli::all();
+        $pdf = PDF::loadview('pembeli.cetak_pdf',['pembeli'=>$pembeli]);
+        return $pdf->stream();
     }
 }

@@ -155,57 +155,66 @@
 	<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
-		   	<li style="background-image: url(images/img_bg_1.jpg);">
+		   	<li style="background-image: url(images/teko.jpg);">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 		   				<div class="slider-text-inner">
 		   					<div class="desc">
-		   						<span class="price">$800</span>
-		   						<h2>Alato Cabinet</h2>
-		   						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+		   						<span class="price">Rp.110000</span>
+		   						<h2>TEKO TERMOS KEKINIAN 1 LITER</h2>
+		   						<p>Lapisan luar termos teko dari bahan plastik foodgrade sehingga aman untuk keluarga Lapisan dalam teko terbuat dari kaca yg BPA free dengan dilapisi logam ( electroplating ) sehingga aman bagi keluarga Tutupan putar teko sangat pakem sehingga anti bocor</p>
 			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
 		   					</div>
 		   				</div>
 		   			</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(images/img_bg_2.jpg);">
+		   	<li style="background-image: url(images/piring.png);">
 		   		<div class="container">
 		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 		   				<div class="slider-text-inner">
 		   					<div class="desc">
-		   						<span class="price">$530</span>
-		   						<h2>The Haluz Rocking Chair</h2>
-		   						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+		   						<span class="price">Rp.75000</span>
+		   						<h2>Piring Keramik Hitam Aesthetic</h2>
+		   						<p>Piring aesthetic, mewah dan simple, Cocok untuk segala tema ruang makan
+									Bahan : Keramik
+									Microwave & Oven safe</p>
 			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
 		   					</div>
 		   				</div>
 		   			</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(images/img_bg_3.jpg);">
+		   	<li style="background-image: url(images/pisau.jpg);">
 		   		<div class="container">
 		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 		   				<div class="slider-text-inner">
 		   					<div class="desc">
-		   						<span class="price">$750</span>
-		   						<h2>Alato Cabinet</h2>
-		   						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+		   						<span class="price">Rp.189000</span>
+		   						<h2>KITCHEN GADGET SET OF 7 ROSEGOLD KITCHENWARE ALAT ALAT DAPUR USEFULL </h2>
+		   						<p>paket set lengkap peralatan dapur terdiri dari
+									garlic press (18x6,8cm)
+									can opener (20,3x6.4cm)
+									pizza cutter (21.3x8,6cm)
+									pairing knife (20.3x2.8cm)
+									grater (24x5.5cm)
+									ice cream spoon (20.3x4.1cm)
+									egg beater (28.4x6cm)</p>
 			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
 		   					</div>
 		   				</div>
 		   			</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(images/img_bg_4.jpg);">
+		   	<li style="background-image: url(images/pan.png);">
 		   		<div class="container">
 		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 		   				<div class="slider-text-inner">
 		   					<div class="desc">
-		   						<span class="price">$540</span>
-		   						<h2>The WW Chair</h2>
-		   						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+		   						<span class="price">Rp.325000</span>
+		   						<h2>Grill Pan 28 x 28 x 4 cm Marble Diecast Series FP-0814-M</h2>
+		   						<p>GAGANG DI DESAIN DENGAN TEKNIK MENYATU LANGSUNG KE BADAN WAJAN.TIDAK MUDAH GOYAH!</p>
 			   					<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
 		   					</div>
 		   				</div>

@@ -37,8 +37,8 @@ class Pembeli extends Model
     {
         return $this->hasMany(Produk::class, 'id_pembeli');
     }
-    public function produk_pembelis()
+    public function transaksi()
     {
-        return $this->belongsToMany(ProdukPembeli::class);
+        return $this->belongsToMany(Transaksi::class);
     }
 }

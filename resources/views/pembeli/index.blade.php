@@ -6,6 +6,22 @@
         <div class="pull-left mt-2">
         <center> <h2>Halaman Pembeli Toko PRuTa</h2> </center>
         </div>
+        <div class="row justify-content-center">
+    <div class="col-md-6">
+        <form action="{{ route('pembeli.index') }}">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search')}}">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <div class="row">
+        <div style="margin:0px 0px 0px 70px;">
+            <a class="btn btn-warning" href="{{ route('cetak_pdf') }}"> Cetak PDF </a>
+        </div>
+    </div><br/>
         <div class="float-right my-2">
             <a class="btn btn-success" href="{{ route('pembeli.create') }}"> Input Pembeli</a>
         </div>
@@ -31,7 +47,7 @@
         <th>Foto</th>
         <th width="280px">Action</th>
     </tr>
-    @foreach ($pembeli as $pbl)
+    @foreach ($paginate as $pbl)
     <tr>
         <td>{{ $pbl ->id }}</td>
         <td>{{ $pbl ->nama }}</td>
@@ -40,9 +56,9 @@
         <td><img width="110px" src="{{asset('storage/'.$pbl->foto)}}">
         
         <td>
-            <form action="{{ route('pembeli.destroy',['pembeli'=>$pbl->id_users]) }}" method="POST">
-                <a class="btn btn-info" href="{{ route('pembeli.show',$pbl->id_users) }}">Show</a>
-                <a class="btn btn-primary" href="{{ route('pembeli.edit',$pbl->id_users) }}">Edit</a>
+            <form action="{{ route('pembeli.destroy',['pembeli'=>$pbl->id]) }}" method="POST">
+                <a class="btn btn-info" href="{{ route('pembeli.show',$pbl->id) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('pembeli.edit',$pbl->id) }}">Edit</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -51,4 +67,5 @@
     </tr>
     @endforeach
 </table>
+{!! $paginate->links() !!}
 @endsection 
