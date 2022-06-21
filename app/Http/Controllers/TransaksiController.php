@@ -27,8 +27,9 @@ class TransaksiController extends Controller
     }
     public function index()
     {
-        $transaksi = Transaksi::all(); // Mengambil semua isi tabel
-        $paginate = Transaksi::orderBy('id', 'asc')->paginate(5);
+        // $transaksi = Transaksi::all(); // Mengambil semua isi tabel
+        $transaksi = Transaksi::with('user')->get();
+        $paginate = Transaksi::with('user')->orderBy('id', 'asc')->paginate(5);
         return view('transaksi.index', ['transaksi' => $transaksi,'paginate'=>$paginate]);
     }
     
