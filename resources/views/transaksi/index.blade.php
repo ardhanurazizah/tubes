@@ -37,6 +37,7 @@
     <tr>
         <th>Id Transaksi</th>
         <th>Id Pembeli</th>
+        <th>Nama</th>
         <th>Tanggal</th>
         <th>Status</th>
         <th>Total Belanja</th>
@@ -46,6 +47,7 @@
     <tr>
         <td>{{ $tr ->id }}</td>
         <td>{{ $tr ->id_users }}</td>
+        <td>{{ $tr ->user->name }}</td>
         <td>{{ $tr ->tanggal }}</td>
         <td>
                                     @if($tr->status == 0)
