@@ -86,6 +86,8 @@
 							<ul class="dropdown">
 								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
 								<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>
+								<li><a href="{{ route('profil.index') }}">Edit Profil</a></li>
+
 							</ul>
 						</li>
 						<li><a href="about.html">About</a></li>

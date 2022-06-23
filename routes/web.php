@@ -77,7 +77,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\MasterviewController::class, 'index'])->name('home');
 
 
-Route::get('/Pembeli/cetak_pdf', [PembeliController::class,'cetak_pdf'])->name('cetak_pdf');
+Route::get('/Pembeli/cetak', [PembeliController::class,'cetak_pdf'])->name('cetak');
 
 
 

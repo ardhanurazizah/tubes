@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pembeli;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use Auth;
 
 class ProfilController extends Controller
 {
@@ -13,7 +18,12 @@ class ProfilController extends Controller
      */
     public function index()
     {
-    //   
+        $pembeli = Pembeli::where('id_users', Auth::user()->id)->first();
+
+        $user = User::where('id', $pembeli->id);
+
+        return view('profil.index', compact('user'));
+
     }
     
 
@@ -46,7 +56,9 @@ class ProfilController extends Controller
      */
     public function show($id)
     {
-        // 
+        //menampilkan detail data dengan menemukan/berdasarkan Id Pembeli
+        $pembeli = Pembeli::where('id', $id)->first();
+        return view('pembeli.detail', compact('pembeli'));
     }
 
     /**
