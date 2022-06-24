@@ -22,8 +22,8 @@
                 <form method="post" action="{{ route('pembeli.store') }}" id="myForm" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">
-                        <label for="id">Id Pembeli</label> 
-                        <input type="id" name="id" class="form-control" id="id" aria-describedby="id" > 
+                        <label for="id_users">Id User</label> 
+                        <input type="id_users" name="id_users" class="form-control" id="id_users" aria-describedby="id_users" > 
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama</label> 
