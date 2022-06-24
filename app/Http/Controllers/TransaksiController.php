@@ -41,8 +41,7 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $detail = DetailTransaksi::all(); // mendapatkan data dari tabel kelas
-	    return view('transaksi.create',['detail' => $detail]);
+        //
     }
 
     /**
@@ -53,34 +52,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_pembeli' => 'required',
-            'id_produk' => 'required',
-            'jumlah' => 'required',
-            'harga' => 'required',
-            'total' => 'required',
-           
-        ]);
-        // //fungsi eloquent untuk menambah data
-        // transaksi::create($request->all());
-        
-        $transaksi = new Transaksi;
-        $transaksi->id_pembeli = $request->get('id_pembeli');
-        $transaksi->total = $request->get('total'); 
-    
-        $detail = DetailTransaksi::find($request->get('id_produk'));
-        $detail = DetailTransaksi::find($request->get('jumlah'));
-        $detail = DetailTransaksi::find($request->get('harga'));
-        //fungsi eloquent untuk menambah data dengan relasi belongsTo
-
-        $transaksi->detail()->associate($detail);
-        $transaksi->save();
-    
-                     // Mahasiswa::create($request->all());
-    
-        //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('transaksi.index')
-            ->with('success', 'Transaksi Berhasil Ditambahkan');
+        //
     }
 
     /**
@@ -91,8 +63,11 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        $details = Detail::where('id', $id)->first();
-        return view('pesan', compact('details'));
+        // $details = Detail::where('id', $id)->first();
+        // return view('pesan', compact('details'));
+        $transaksi = Transaksi::where('id', $id)->first();
+    	$details = Detail::where('id_transaksi', $transaksi->id)->get();
+     	return view('transaksi.detail', compact('transaksi','details'));
         
     }
 
@@ -141,8 +116,7 @@ class TransaksiController extends Controller
         $transaksi->total = $transaksi->subtotal-$detail->subtotal;
         $transaksi->update();
         $detail->delete();
-        Alert::error('Transaksi Sukses Dihapus', 'Hapus');
-        return redirect('checkout');
+        return redirect('checkout')-> with('success', 'Produk Berhasil Dihapus');
     }
     public function pesan(Request $request, $id)
     {   
@@ -190,7 +164,7 @@ class TransaksiController extends Controller
         }
         //jumlah total
         $transaksi = Transaksi::where('id_users', Auth::user()->id)->where('status',0)->first();
-        $transaksi->total = $transaksi->subtotal+$produk->harga*$request->jumlah_pesan;
+        $transaksi->total = Detail::where('id_transaksi', $transaksi->id)->sum('subtotal');
         $transaksi->update();
         
         // Alert::success('Transaksi Sukses Masuk Keranjang', 'Success');
@@ -224,5 +198,11 @@ class TransaksiController extends Controller
     {
         $produk = Produk::where('id', $id)->first();
         return view('keranjang', compact('produk'));
+    }
+    public function cetak_transaksi()
+    {
+        $transaksi = Transaksi::all();
+        $pdf = PDF::loadview('transaksi.cetak_transaksi',['transaksi'=>$transaksi]);
+        return $pdf->stream();
     }
 }

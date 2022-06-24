@@ -75,23 +75,28 @@
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
-						<li class="has-dropdown active">
-							<a href="product.html">Shop</a>
-							<ul class="dropdown">
-								<li><a href="single.html">Single Shop</a></li>
-							</ul>
-						</li>
-						<li><a href="about.html">About</a></li>
+					@if (auth()->user()->name=="Ardha Nur Azizah")
 						<li class="has-dropdown">
-							<a href="services.html">Services</a>
+							<a href="services.html">Menu</a>
 							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
+								<li><a href="{{ route('produk.index') }}">Produk</a></li>
+								<li><a href="{{ route('pembeli.index') }}">Pembeli</a></li>
+								<li><a href="{{ route('transaksi.index') }}">Transaksi</a></li>
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
+						@endif
+						<li class="has-dropdown">
+							<a href="product.html">Shop</a>
+							<ul class="dropdown">
+								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
+							</ul>
+						</li>
+						<li><a href="about.html">About</a></li>
+						
 						<li><a href="contact.html">Contact</a></li>
+						<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>	
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
@@ -129,7 +134,7 @@
         <td>{{ number_format($dt->subtotal) }}</td>
         @endforeach
         <!-- <td><img width="150px" src="{{asset('storage/'.$dt->foto)}}">  -->
-        <tr>
+        <!-- <tr>
                                 <td colspan="5" align="left"><strong>Total Harga : {{ number_format($transaksi->total) }}</strong></td>
                                 
 
@@ -144,9 +149,15 @@
                                 
 
                             </tr>
-    </tr>
+    </tr> -->
    
     </table>
+	<div class="pull-center mt-2">
+	<strong>Total Harga : {{ number_format($transaksi->total) }}</strong><br>
+	<strong>Kode Unik : {{ number_format($transaksi->kode) }}</strong></td><br>
+	<strong>Total yang harus ditransfer : {{ number_format($transaksi->kode+$transaksi->total) }}</strong>
+        </div ><br><br>
+
 
 	<button href="{{ url('konfirmasi') }}" type="submit" class="btn btn-primary mt-2">Bayar</button>
 	

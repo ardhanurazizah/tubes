@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shop &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
+	<title>PRuTa</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -77,19 +77,7 @@
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
-					<li class="has-dropdown">
-							
-							
-						</li>
-						<li class="has-dropdown">
-							<a href="product.html">Shop</a>
-							<ul class="dropdown">
-								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
-								<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>
-							</ul>
-						</li>
-						<li><a href="about.html">About</a></li>
-						@if (auth()->user()->name=="Ardha Nur Azizah")
+					@if (auth()->user()->name=="Ardha Nur Azizah")
 						<li class="has-dropdown">
 							<a href="services.html">Menu</a>
 							<ul class="dropdown">
@@ -101,6 +89,14 @@
 							</ul>
 						</li>
 						@endif
+						<li class="has-dropdown">
+							<a href="product.html">Shop</a>
+							<ul class="dropdown">
+								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
+							</ul>
+						</li>
+						<li><a href="about.html">About</a></li>
+						
 						<li><a href="contact.html">Contact</a></li>
 						<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>						
 						@guest
@@ -234,9 +230,9 @@
 						<span class="icon">
 							<i class="icon-credit-card"></i>
 						</span>
-						<h3>Credit Card</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+						<h3>Kartu Kredit</h3>
+						<p>Para pelanggan di Website PRuta dapat menukmati beberapa fitur yang telah disediakan. Selain itu juga dapat membeli beberapa peralatan rumah tangga dengan sistem pembayaran kartu kredit</p>
+						<p><a href="#" class="btn btn-primary btn-outline">Selengkapnya...</a></p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 text-center">
@@ -244,9 +240,9 @@
 						<span class="icon">
 							<i class="icon-wallet"></i>
 						</span>
-						<h3>Save Money</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+						<h3>Hemat</h3>
+						<p>Pelanggan akan memperoleh produk yang berkualitas dan terjamin dengan harga yang hemat di kantong</p>
+						<p><a href="#" class="btn btn-primary btn-outline">Selengkapnya...</a></p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 text-center">
@@ -254,9 +250,9 @@
 						<span class="icon">
 							<i class="icon-paper-plane"></i>
 						</span>
-						<h3>Free Delivery</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+						<h3>Gratis Ongkir</h3>
+						<p>Pelanggan memiliki dua pilihan dalam pengambilan produk. Dapat dilakukan dengan mengambil di toko offline atau pengiriman ke alamat rumah. Pelanggan dapat menikmati gratis ongkir di hari-hari tertentu. Selamat berbelanja!</p>
+						<p><a href="#" class="btn btn-primary btn-outline">Selengkapnya...</a></p>
 					</div>
 				</div>
 			</div>
@@ -266,9 +262,9 @@
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<span>Cool Stuff</span>
+					<span>PRuTa</span>
 					<h2>Products.</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p>Beberapa produk dari PRuTa (Peralatan Rumah Tangga) yang memiliki kualitas dan mutu yang terjamin. Dapat di pesan selagi persediaan masih ada. Selamat berbelanja!</p>
 				</div>
 			</div>
 			@foreach ($paginate as $pr)

@@ -71,27 +71,32 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">Shop.</a></div>
+					<div id="fh5co-logo"><a href="index.html">PRuTa</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
-						<li class="has-dropdown active">
-							<a href="product.html">Shop</a>
-							<ul class="dropdown">
-								<li><a href="single.html">Single Shop</a></li>
-							</ul>
-						</li>
-						<li><a href="about.html">About</a></li>
+					@if (auth()->user()->name=="Ardha Nur Azizah")
 						<li class="has-dropdown">
-							<a href="services.html">Services</a>
+							<a href="services.html">Menu</a>
 							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
+								<li><a href="{{ route('produk.index') }}">Produk</a></li>
+								<li><a href="{{ route('pembeli.index') }}">Pembeli</a></li>
+								<li><a href="{{ route('transaksi.index') }}">Transaksi</a></li>
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
+						@endif
+						<li class="has-dropdown">
+							<a href="product.html">Shop</a>
+							<ul class="dropdown">
+								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
+							</ul>
+						</li>
+						<li><a href="about.html">About</a></li>
+						
 						<li><a href="contact.html">Contact</a></li>
+						<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>	
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
@@ -113,10 +118,14 @@
 	</nav>
 <div class="col-md-12 mt-2">
 
+<div class="col-lg-12 margin-tb">
+        <div class="pull-center mt-2">
+        <center> <h2>Riwayat Belanja Produk PRuTa</h2> </center><br>
+</div >
+
 <table class="table table-bordered">
     <tr>
         <th>Tanggal</th>
-        
         <th>Harga</th>
         <th>Total</th>
         <th width="280px">Action</th>
@@ -132,13 +141,13 @@
                                     Sudah dibayar 
                                     @endif
                                 </td>
-                                <td>{{ number_format($pesanan->jumlah_harga+$pesanan->kode) }}</td>
+                                <td>{{ number_format($pesanan->total) }}</td>
                                 <td>
-                                    <a href="{{ url('pesan') }}/{{ $pesanan->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail</a>
+                                    <a href="{{ url('transaksi') }}/{{ $pesanan->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail</a>
                                 </td>
                             </tr>
                             @endforeach
-    </table>
+    </table><br><br><br>
         </div
         <div class="col-md-12 mt-1">
             <div class="card">

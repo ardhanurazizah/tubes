@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shop &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
+	<title>PRuTa </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -71,27 +71,32 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">Shop.</a></div>
+					<div id="fh5co-logo"><a href="index.html">PRuTa</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
-						<li class="has-dropdown active">
-							<a href="product.html">Shop</a>
-							<ul class="dropdown">
-								<li><a href="single.html">Single Shop</a></li>
-							</ul>
-						</li>
-						<li><a href="about.html">About</a></li>
+					@if (auth()->user()->name=="Ardha Nur Azizah")
 						<li class="has-dropdown">
-							<a href="services.html">Services</a>
+							<a href="services.html">Menu</a>
 							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
+								<li><a href="{{ route('produk.index') }}">Produk</a></li>
+								<li><a href="{{ route('pembeli.index') }}">Pembeli</a></li>
+								<li><a href="{{ route('transaksi.index') }}">Transaksi</a></li>
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
+						@endif
+						<li class="has-dropdown">
+							<a href="product.html">Shop</a>
+							<ul class="dropdown">
+								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
+							</ul>
+						</li>
+						<li><a href="about.html">About</a></li>
+						
 						<li><a href="contact.html">Contact</a></li>
+						<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
@@ -120,7 +125,7 @@
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
 							<h1>Product Details</h1>
-							<h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
+							<h2>Product by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Ardha dan Rizka</a></h2>
 						</div>
 					</div>
 				</div>
@@ -175,8 +180,8 @@
 							<h3>{{$Produk->deskripsi}}</h3>
 							<h3> Rp {{$Produk->harga}}</h3>
 							<p>
-								<a href="{{ url('keranjang') }}/{{ $Produk->id }} " class="btn btn-primary btn-outline btn-lg">Add to Cart</a>
-								<a href="#" class="btn btn-primary btn-outline btn-lg">Compare</a>
+								<a href="{{ url('keranjang') }}/{{ $Produk->id }} " class="btn btn-primary btn-outline btn-lg">Beli Produk</a>
+								<a href="#" class="btn btn-primary btn-outline btn-lg">Tandai Produk</a>
 							</p>
 						</div>
 					</div>

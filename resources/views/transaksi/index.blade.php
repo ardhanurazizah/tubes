@@ -17,9 +17,12 @@
     </div>
 </div>
         <!-- <div class="row"> -->
-        <div class="float-right my-2">
-            <a class="btn btn-success" href="{{ route('transaksi.create') }}"> Input Transaksi</a>
-        </div>
+        <div class="float-left my-2">
+            <a class="btn btn-success" style="#A0522D" href="{{ route('home') }}">Kembali</a>
+        </div>&nbsp;
+        <div class="float-left my-2">
+            <a class="btn btn-warning" style="#A0522D" href="{{ route('cetak_transaksi') }}"> Cetak Laporan Produk</a>
+        </div>&nbsp;
     </div>
 </div>
 
@@ -36,7 +39,7 @@
 <table class="table table-bordered">
     <tr>
         <th>Id Transaksi</th>
-        <th>Id Pembeli</th>
+        <!-- <th>Id Pembeli</th> -->
         <th>Nama</th>
         <th>Tanggal</th>
         <th>Status</th>
@@ -46,7 +49,7 @@
     @foreach ($paginate as $tr)
     <tr>
         <td>{{ $tr ->id }}</td>
-        <td>{{ $tr ->id_users }}</td>
+        <!-- <td>{{ $tr ->id_users }}</td> -->
         <td>{{ $tr ->user->name }}</td>
         <td>{{ $tr ->tanggal }}</td>
         <td>
@@ -58,13 +61,13 @@
                                 </td>
         <td>{{ $tr ->total }}</td>
         <td>
-            <form action="{{ route('transaksi.destroy',['transaksi'=>$tr->id]) }}" method="POST">
-                <a class="btn btn-info" href="{{ url('pesan') }}/{{ $tr->id }}">Show</a>
-                <a class="btn btn-primary" href="{{ route('transaksi.edit',$tr->id) }}">Edit</a>
-                @csrf
+            <!-- <form action="{{ route('transaksi.destroy',['transaksi'=>$tr->id]) }}" method="POST"> -->
+                <a class="btn btn-info" href="{{ url('transaksi') }}/{{ $tr->id }}">Show</a>
+                <!-- <a class="btn btn-primary" href="{{ route('transaksi.edit',$tr->id) }}">Edit</a> -->
+                <!-- @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>
-            </form> 
+            </form>  -->
         </td>
     </tr>
     @endforeach

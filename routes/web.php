@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
 */
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::group(['middleware' => ['auth','CekLevel:Ardha Nur Azizah']], function(){
@@ -49,6 +49,9 @@ Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkou
 Route::get('/konfirmasi', [TransaksiController::class, 'konfirmasi'])->name('konfirmasi');
 Route::get('pesan/{id}', [RiwayatController::class, 'detail'])->name('pesan');
 Route::get('riwayat', [RiwayatController::class, 'index'])->name('riwayat');
+Route::delete('/checkout/{id}', [TransaksiController::class, 'destroy'])->name('destroy');
+Route::get('transaksi/{id}', [TransaksiController::class, 'show'])->name('transaksi');
+Route::get('/Transaksi/cetak_transaksi', [TransaksiController::class,'cetak_transaksi'])->name('cetak_transaksi');
 // Route::get('/a', function () {
 //     return view('masterview');
 // });
@@ -77,7 +80,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\MasterviewController::class, 'index'])->name('home');
 
 
-Route::get('/Pembeli/cetak_pdf', [PembeliController::class,'cetak_pdf'])->name('cetak_pdf');
+Route::get('/Pembeli/cetak_pdf', [PembeliController::class,'cetak_pdf'])->name('cetak');
 
 
 

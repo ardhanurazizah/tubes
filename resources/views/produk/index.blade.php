@@ -1,10 +1,12 @@
 @extends('produk.layout')
 
 @section('content')
+
+
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left mt-2">
-        <center> <h2>Daftar Produk Toko PRuTa</h2> </center>
+        <center> <h2>Daftar Produk Toko PRuTa</h2> </center><br>
 </div >
 <div class="row justify-content-center">
     <div class="col-md-6">
@@ -17,11 +19,14 @@
     </div>
 </div>
         <!-- <div class="row"> -->
-        <div class="float-right my-2">
-            <a class="btn btn-warning" style="#A0522D" href="{{ route('cetak_pdf') }}"> Cetak Laporan </a>
+        <div class="float-left my-2">
+            <a class="btn btn-success" style="#A0522D" href="{{ route('home') }}">Kembali</a>
         </div>&nbsp;
         <div class="float-right my-2">
-            <a class="btn btn-success" href="{{ route('produk.create') }}"> Input Pembeli</a>
+            <a class="btn btn-warning" style="#A0522D" href="{{ route('cetak_pdf') }}"> Cetak Laporan Produk</a>
+        </div>&nbsp;
+        <div class="float-right my-2">
+            <a class="btn btn-success" href="{{ route('produk.create') }}"> Input Produk</a>
         </div>
     </div>
 </div>
@@ -38,11 +43,11 @@
 @endif
 <table class="table table-bordered">
     <tr>
-        <th>Nama</th>
-        <th>Deskripsi</th>
+        <th>Nama Produk</th>
+        <th>Deskripsi Produk</th>
         <th>Harga</th>
         <th>Stok</th>
-        <th>Foto</th>
+        <th>Gambar</th>
         <th width="280px">Action</th>
     </tr>
     @foreach ($paginate as $pr)
