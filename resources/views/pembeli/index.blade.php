@@ -19,7 +19,7 @@
 
     <div class="row">
         <div style="margin:0px 0px 0px 70px;">
-            <a class="btn btn-warning" href="{{ route('cetak_pdf') }}"> Cetak PDF </a>
+            <a class="btn btn-warning" href="{{ route('cetak') }}"> Cetak PDF </a>
         </div>
     </div><br/>
         <div class="float-right my-2">

@@ -9,10 +9,10 @@
          </div>
          <div class="card-body">
              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>Nama: </b>{{$profil->nama}}</li>
-                <li class="list-group-item"><b>Alamat: </b>{{$profil->alamat}}</li>
-                <li class="list-group-item"><b>No HP: </b>{{$profil->no}}</li>
-                <li class="list-group-item"><b>Foto: </b><img style="width: 100%" src="{{ asset('./storage/'. $profil->foto) }}" alt=""></li>
+                <li class="list-group-item"><b>Nama: </b>{{$pembeli->nama}}</li>
+                <li class="list-group-item"><b>Alamat: </b>{{$pembeli->alamat}}</li>
+                <li class="list-group-item"><b>No HP: </b>{{$pembeli->no}}</li>
+                <li class="list-group-item"><b>Foto: </b><img style="width: 100%" src="{{ asset('./storage/'. $pembeli->foto) }}" alt=""></li>
                 </ul>
             </div>
         </div>
