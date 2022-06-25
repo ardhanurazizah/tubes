@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth','CekLevel:Ayu Puspita']], function(){
 Route::get('/Produk/cetak_pdf', [ProdukController::class,'cetak_pdf'])->name('cetak_pdf');
 Route::get('/Produk/tampilan', [ProdukController::class,'tampilan'])->name('tampilan');
 Route::resource('detail', MasterviewController::class);
+Route::resource('transaksi', TransaksiController::class);
+
 
 
 Route::get('/a', function () {

@@ -19,11 +19,7 @@ class ProfilController extends Controller
     public function index()
     {
         $pembeli = Pembeli::where('id_users', Auth::user()->id)->first();
-
-        $user = User::where('id', $pembeli->id);
-
-        return view('profil.index', compact('user'));
-
+        return view('profil.index', compact('pembeli'));
     }
     
 
@@ -56,9 +52,7 @@ class ProfilController extends Controller
      */
     public function show($id)
     {
-        //menampilkan detail data dengan menemukan/berdasarkan Id Pembeli
-        $pembeli = Pembeli::where('id', $id)->first();
-        return view('pembeli.detail', compact('pembeli'));
+      //
     }
 
     /**
@@ -69,7 +63,9 @@ class ProfilController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pembeli = Pembeli::find($id);
+
+        return view('profil.edit', ['pembeli' => $pembeli]);
     }
 
     /**
@@ -81,7 +77,22 @@ class ProfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pembeli = Pembeli::find($id);
+
+        // $pembeli->id = $request->get('id');
+        $pembeli->nama = $request->get('nama');
+        $pembeli->alamat = $request->get('alamat');
+        $pembeli->no = $request->get('no');
+       
+        if ($pembeli->foto && file_exists(storage_path('app/public/' . $pembeli->foto))) {
+            Storage::delete('public/' . $pembeli->foto);
+        }
+        $image_name = $request->file('foto')->store('foto', 'public');
+        $pembeli->foto = $image_name;
+
+        $pembeli->save();
+        return redirect()->route('pembeli.index')
+            ->with('success', 'Pembeli Berhasil Diupdate');
     }
 
     /**

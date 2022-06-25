@@ -78,22 +78,7 @@
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 
-					@if (auth()->user()->name=="Ardha Nur Azizah")
-
-					<li class="has-dropdown">
-							
-							
-						</li>
-						<li class="has-dropdown">
-							<a href="product.html">Shop</a>
-							<ul class="dropdown">
-								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
-								<li><a href="{{ url('riwayat') }}">Riwayat Belanja</a></li>
-								<li><a href="{{ route('profil.index') }}">Edit Profil</a></li>
-
-							</ul>
-						</li>
-						<li><a href="about.html">About</a></li>
+					
 						@if (auth()->user()->name=="Ardha Nur Azizah")
 
 						<li class="has-dropdown">
@@ -111,6 +96,8 @@
 							<a href="product.html">Shop</a>
 							<ul class="dropdown">
 								<li><a href="{{ route('tampilan') }}">Single Shop</a></li>
+								<li><a href="{{ route('profil.index') }}">Edit Profil</a></li>
+
 							</ul>
 						</li>
 						<li><a href="about.html">About</a></li>

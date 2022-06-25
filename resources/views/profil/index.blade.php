@@ -15,6 +15,8 @@
                 <li class="list-group-item"><b>Foto: </b><img style="width: 100%" src="{{ asset('./storage/'. $pembeli->foto) }}" alt=""></li>
                 </ul>
             </div>
+            
+            <a class="btn btn-primary" href="{{ route('profil.edit',$pembeli->id) }}">Edit</a>
         </div>
     </div>
 </div>
