@@ -6,6 +6,7 @@ use App\Models\Pembeli;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 use PDF;
 
 class PembeliController extends Controller
@@ -56,7 +57,7 @@ class PembeliController extends Controller
 
         //melakukan validasi data
         $request->validate([
-            // 'id' => 'required',
+             'id_users' => 'required',
              'nama' => 'required',
              'alamat' => 'required',
              'no' => 'required',
@@ -69,7 +70,12 @@ class PembeliController extends Controller
         $pembeli->alamat = $request->get('alamat');
         $pembeli->no = $request->get('no');
         $pembeli->foto = $image_name;
-        $pembeli->save();
+
+        $user = User::find($request->get('id_users'));
+            //fungsi eloquent untuk menambah data dengan relasi belongsTo
+    
+            $pembeli->user()->associate($user);
+            $pembeli->save();
 
         //melakukan validasi data
         // $request->validate([
@@ -89,7 +95,7 @@ class PembeliController extends Controller
 
         
         //fungsi eloquent untuk menambah data
-        Pembeli::create($request->all());
+        //Pembeli::create($request->all());
 
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()->route('pembeli.index')
