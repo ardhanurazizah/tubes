@@ -159,7 +159,7 @@
         </div ><br><br>
 
 
-	<button href="{{ url('konfirmasi') }}" type="submit" class="btn btn-primary mt-2">Bayar</button>
+		<a href="{{ url('cetak_nota') }}/{{ $transaksi->id }}" class="btn btn-success">Cetak Nota</a>
 	
 
         </div

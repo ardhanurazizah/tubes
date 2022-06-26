@@ -54,6 +54,7 @@ Route::get('riwayat', [RiwayatController::class, 'index'])->name('riwayat');
 Route::delete('/checkout/{id}', [TransaksiController::class, 'destroy'])->name('destroy');
 Route::get('transaksi/{id}', [TransaksiController::class, 'show'])->name('transaksi');
 Route::get('/Transaksi/cetak_transaksi', [TransaksiController::class,'cetak_transaksi'])->name('cetak_transaksi');
+Route::get('/cetak_nota/{id}', [RiwayatController::class,'cetak_nota'])->name('cetak_nota');
 // Route::get('/a', function () {
 //     return view('masterview');
 // });

@@ -31,4 +31,20 @@ class RiwayatController extends Controller
     	$details = Detail::where('id_transaksi', $transaksi->id)->get();
      	return view('pesan', compact('transaksi','details'));
     }
+
+    public function cetak_nota($id)
+    {
+        $transaksi = Transaksi::where('id', $id)->first();
+        
+        $detail = Detail::where('id_transaksi', $transaksi->id)
+                        ->with('transaksi')
+                        ->get();
+        $pdf = PDF::loadview('cetak_nota', compact('detail', 'transaksi'));
+        return $pdf->stream();
+
+        // $transaksi = Transaksi::where('id', $id)->first();
+        // $detail = Detail::where('id_transaksi', $transaksi->id)->get();
+        // $pdf = PDF::loadview('cetak_nota', compact('detail'));
+        // return $pdf->stream();
+    }
 }

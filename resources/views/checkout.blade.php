@@ -148,7 +148,8 @@
     @endforeach
     </table>
 	<!-- <button href="{{ url('konfirmasi') }}" type="submit" class="btn btn-primary mt-2">Pesan</button> -->
-	<a href="{{ url('konfirmasi') }}" class="btn btn-success">Selesai Belanja</a>
+	<a href="{{ url('konfirmasi') }}" class="btn btn-success">Bayar</a>
+	
 <br><br><br>
         </div
         <div class="col-md-12 mt-1">

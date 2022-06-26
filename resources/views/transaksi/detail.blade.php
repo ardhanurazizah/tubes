@@ -163,6 +163,7 @@
 	<strong>Kode Unik : {{ number_format($transaksi->kode) }}</strong></td><br>
 	<strong>Total yang harus ditransfer : {{ number_format($transaksi->kode+$transaksi->total) }}</strong>
         </div ><br><br><br>
+		<a href="{{ url('cetak_nota') }}/{{ $transaksi->id }}" class="btn btn-success">Cetak Nota</a>
 
 	
 	
