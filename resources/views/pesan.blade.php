@@ -117,7 +117,9 @@
 		</div>
 	</nav>
 <div class="col-md-12 mt-2">
-
+<div class="pull-center mt-2">
+        <center> <h2>Nota Belanja Produk PRuTa</h2> </center>
+        </div >
 <table class="table table-bordered">
     <tr>
         <th>Nama</th>
